@@ -1,0 +1,73 @@
+.bg-color-1 {
+  background-color: #ACD5F2!important;
+}
+.bg-color-2 {
+  background-color: #7FA8C9!important;
+}
+.bg-color-3 {
+  background-color: #527BA0!important;
+}
+.bg-color-4 {
+  background-color: #254E77!important;
+}
+
+.d-block {
+  display: block!important;
+}
+.d-none {
+  display: none!important;
+}
+
+.contribution {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  padding: 50px;
+  gap: 2px;
+  & .contribution-weekly {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    & .week {
+      font-size: 12px;
+      width: 15px;
+      height: 15px;
+    }
+
+
+    & .contribution-weekly_day {
+      display: block;
+      width: 15px;
+      height: 15px;
+      background-color: #EDEDED;
+      position: relative;
+
+      & .modal {
+        display: none;
+        position: absolute;
+        background-color: black;
+        color: white;
+        width: 145px;
+        z-index: 100;
+        border-radius: 5px;
+        padding: 10px;
+        top: -73px;
+        left: -75px;
+        & span {
+          display: block;
+        }
+      }
+
+      & .modal::before {
+        content: "";
+        border: 10px solid transparent;
+        border-top: 10px solid black;
+        display: block;
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+      }
+    }
+  }
+}
