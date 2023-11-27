@@ -41,37 +41,46 @@ const Contributions = memo(() => {
     return date.format('YYYY-MM-DD');
   })
 
+  const dateRangeLastWeek = Array.from({length:7}).map((el, i) => {
+    if (thisDayOfWeekly === 6){
+      const date = currentDate.subtract(i, 'day')
+    }
+    // dateRange >==
+  })
+
   const groupedDatesLast = [];
   groupedDatesLast.push(dateRange.slice(0, thisDayOfWeekly));
 
   const groupedDates = [];
-  for (let i = 0; i < dateRange.length - thisDayOfWeekly ; i===0 ? i+=thisDayOfWeekly : i+=7) {
+  for (let i = 0; i < dateRange.length ; i+=7) {
       groupedDates.push(dateRange.slice(i, i + 7));
   }
 
+  console.log(groupedDates)
+
   return (
     <section className={'contribution'}>
-      <div className="contribution-weekly">
-        {groupedDatesLast[0].reverse().map((date) => (
-          <span
-            key={date}
-            className={`contribution-weekly_day 
-            ${
-              dateJson[date] <= 9 && dateJson[date] > 0 ? 'bg-color-1' :
-                dateJson[date] > 9 && dateJson[date] < 20 ? 'bg-color-2' :
-                  dateJson[date] > 20  && dateJson[date] < 30 ? 'bg-color-3' :
-                    dateJson[date] > 30 ? 'bg-color-4' : ''
-            }`}
-            data-date={date}
-          >
-            <span className={'modal '}></span>
-          </span>
-        ))}
-      </div>
+      {/*<div className="contribution-weekly">*/}
+      {/*  {groupedDatesLast[0].reverse().map((date) => (*/}
+      {/*    <span*/}
+      {/*      key={date}*/}
+      {/*      className={`contribution-weekly_day */}
+      {/*      ${*/}
+      {/*        dateJson[date] <= 9 && dateJson[date] > 0 ? 'bg-color-1' :*/}
+      {/*          dateJson[date] > 9 && dateJson[date] < 20 ? 'bg-color-2' :*/}
+      {/*            dateJson[date] > 20  && dateJson[date] < 30 ? 'bg-color-3' :*/}
+      {/*              dateJson[date] > 30 ? 'bg-color-4' : ''*/}
+      {/*      }`}*/}
+      {/*      data-date={date}*/}
+      {/*    >*/}
+      {/*      <span className={'modal '}></span>*/}
+      {/*    </span>*/}
+      {/*  ))}*/}
+      {/*</div>*/}
       {groupedDates.map((week, index) => (
-        index!==0 &&
+        // index!==0 &&
           <div key={index} className="contribution-weekly">
-            {week.reverse().map((date) => (
+            {week.reverse().map((date , index) => (
               <DaySpan key={date} date={date} dateJson={dateJson}  handleClick={handleClick} isOpen={date===isOpen}/>
             ))}
           </div>
